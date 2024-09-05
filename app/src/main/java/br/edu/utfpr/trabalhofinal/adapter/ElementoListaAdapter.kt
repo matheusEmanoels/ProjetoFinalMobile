@@ -15,6 +15,7 @@ import br.edu.utfpr.trabalhofinal.database.DatabaseHandler.Companion.TIPO
 import br.edu.utfpr.trabalhofinal.database.DatabaseHandler.Companion.DETALHE
 import br.edu.utfpr.trabalhofinal.database.DatabaseHandler.Companion.VALOR
 import br.edu.utfpr.trabalhofinal.database.DatabaseHandler.Companion.DATA
+import java.text.DecimalFormat
 
 class ElementoListaAdapter (val context : Context, val cursor : Cursor) : BaseAdapter() {
     private lateinit var banco : DatabaseHandler
@@ -65,7 +66,11 @@ class ElementoListaAdapter (val context : Context, val cursor : Cursor) : BaseAd
         }
         tvDataElementoLita.setText(cursor.getString(DATA))
         tvDetalheElementoLita.setText(cursor.getString(DETALHE))
-        tvValorElementoLita.setText( cursor.getString(VALOR))
+
+        val df = DecimalFormat("#,###.00")
+        println(cursor.getString(VALOR).toDouble())
+        val valorformatado = df.format(cursor.getString(VALOR).toDouble())
+        tvValorElementoLita.setText(valorformatado)
 
         return v
     }

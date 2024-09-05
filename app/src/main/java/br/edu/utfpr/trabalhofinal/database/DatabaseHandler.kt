@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import br.edu.utfpr.trabalhofinal.entity.Lancamento
+import java.text.DecimalFormat
 
 class DatabaseHandler  (context : Context) : SQLiteOpenHelper(context, DATABESE_NAME,null, DATABESE_VERSION){
     companion object{
@@ -16,7 +17,7 @@ class DatabaseHandler  (context : Context) : SQLiteOpenHelper(context, DATABESE_
         public const val  TIPO = 1
         public const val  DETALHE = 2
         public const val  VALOR = 3
-        public const val  DATA = 3
+        public const val  DATA = 4
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -54,5 +55,27 @@ class DatabaseHandler  (context : Context) : SQLiteOpenHelper(context, DATABESE_
             null)
 
         return registro
+    }
+
+    fun retonSaldo() : Double{
+        var retorno = 0.00
+        val db = this.writableDatabase
+        val cursor = db.query(TABLE_NAME, null, null, null, null, null, null)
+
+        while(cursor.moveToNext()){
+            val tipo = cursor.getString(TIPO)
+            val valor = cursor.getString(VALOR).toDouble()
+
+
+            if(tipo == "Credito" )
+            {
+                retorno += valor
+            }
+            else{
+                retorno -= valor
+            }
+        }
+
+        return  retorno
     }
 }
