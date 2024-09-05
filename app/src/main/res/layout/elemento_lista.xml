@@ -71,6 +71,14 @@
         app:layout_constraintStart_toEndOf="@+id/spliThree"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/dividirElementoLista"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="51dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
