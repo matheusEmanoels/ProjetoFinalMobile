@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvTipo"
+        android:id="@+id/tvTipoElementoLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -24,7 +24,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/tvTipo"
+        app:layout_constraintStart_toEndOf="@+id/tvTipoElementoLista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
         android:layout_marginTop="16dp"
         android:text="Detalhe:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTipoElementoLista" />
 
     <Spinner
         android:id="@+id/spDetalhe"
@@ -81,17 +81,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvValor"/>
 
-    <EditText
-        android:id="@+id/etDataLancamento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:inputType="datetime"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etValor"
-        app:layout_constraintTop_toBottomOf="@+id/etValor"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataLancamento" />
+        <DatePicker
+            android:id="@+id/dpDataLancamento"
+            android:datePickerMode="spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/etValor"
+            app:layout_constraintTop_toBottomOf="@+id/etValor"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/btnLancar"
@@ -100,7 +99,7 @@
         android:layout_marginTop="12dp"
         android:text="Lançar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDataLancamento"
+        app:layout_constraintTop_toBottomOf="@+id/dpDataLancamento"
         android:onClick="btnLancarOnClick"/>
 
     <Button
