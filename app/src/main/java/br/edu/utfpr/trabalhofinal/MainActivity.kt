@@ -89,10 +89,15 @@ class MainActivity : AppCompatActivity() {
         startActivity( intent )
     }
     fun btnSaldoOnClick(view: View) {
-
+        var valorFormatado = ""
         val saldo  = banco.retonSaldo()
         val df = DecimalFormat("#,###.00")
-        val valorFormatado = df.format(saldo)
+        if(saldo > 0){
+            valorFormatado = df.format(saldo)
+        }else{
+            valorFormatado = "0.00"
+        }
+
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Valor")
 
